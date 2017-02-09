@@ -116,6 +116,10 @@ class Robot {
         }
     }
 
+    String getOutput() {
+        return "${x},${y},${facing}"
+    }
+
     private class At {
 
         /**

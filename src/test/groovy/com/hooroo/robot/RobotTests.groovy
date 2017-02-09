@@ -325,4 +325,25 @@ class RobotTests extends Specification {
         then:
         thrown NotOnTableException
     }
+
+    def "Robot should report location and direction faced after being placed on table"() {
+        when:
+        robot.putOn(new Table()).at(2, 1).facing(NORTH)
+        String output = robot.output
+
+        then:
+        output == "2,1,NORTH"
+    }
+
+    def "Robot should report location and direction after moving on the table"() {
+        given:
+        robot.putOn(new Table()).at(2, 1).facing(WEST)
+
+        when:
+        robot.move()
+        String output = robot.output
+
+        then:
+        output == "1,1,WEST"
+    }
 }
