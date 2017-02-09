@@ -309,4 +309,20 @@ class RobotTests extends Specification {
         then:
         thrown OutOfBoundsException
     }
+
+    def "Robot should throw exception if turn() is invoked without first being placed on a table"() {
+        when:
+        robot.move()
+
+        then:
+        thrown NotOnTableException
+    }
+
+    def "Robot should throw exception if move() is invoked without first being placed on a table"() {
+        when:
+        robot.turn(LEFT)
+
+        then:
+        thrown NotOnTableException
+    }
 }

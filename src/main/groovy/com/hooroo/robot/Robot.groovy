@@ -23,15 +23,17 @@ class Robot {
      * @return Boolean indicated if robot is on table
      */
     Boolean getOnTable() {
+        println("${table} - ${x},${y},${facing}")
+
         if (!table) {
             return false
         }
 
-        if (!x) {
+        if (x == null) {
             return false
         }
 
-        if (!y) {
+        if (y == null) {
             return false
         }
 
@@ -57,6 +59,10 @@ class Robot {
      * @param direction {@link RelativeDirection} to turn
      */
     void turn(RelativeDirection direction) {
+        if (!this.onTable) {
+            throw new NotOnTableException()
+        }
+
         switch (facing) {
             case NORTH:
                 direction == LEFT ?
@@ -84,6 +90,10 @@ class Robot {
      * @throws OutOfBoundsException When destination coordinate is not reachable or out of bounds
      */
     void move() throws OutOfBoundsException {
+        if (!this.onTable) {
+            throw new NotOnTableException()
+        }
+
         if (!table.canMove(facing).from(x, y)) {
             throw new OutOfBoundsException()
         }
