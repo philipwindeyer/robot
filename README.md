@@ -29,6 +29,8 @@
 1. Navigate to where the robot.jar file is located  
 2. Execute 'java -jar robot.jar < file.txt' where 'file.txt' is the file containing command you wish to enter into the app  
 
+- *Note*: There are test files located in src/main/resources called a.txt, b.txt and c.txt  
+
 ## Example Usage
 
 ### Via stdin
@@ -73,6 +75,8 @@ exit
 ### Via piped file
 $ java -jar robot.jar < a.txt  
 0,1,NORTH  
+
+- *Note*: There are test files located in src/main/resources called a.txt, b.txt and c.txt  
   
 ## Example Compilation Output  
 $ gradle -i clean jar  
