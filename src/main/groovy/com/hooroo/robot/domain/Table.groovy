@@ -1,4 +1,4 @@
-package com.hooroo.robot
+package com.hooroo.robot.domain
 
 import com.hooroo.robot.direction.CardinalDirection
 

@@ -1,4 +1,4 @@
-package com.hooroo.robot
+package com.hooroo.robot.exception
 
 class NotOnTableException extends Exception {
 

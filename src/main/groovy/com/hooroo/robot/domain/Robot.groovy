@@ -1,7 +1,9 @@
-package com.hooroo.robot
+package com.hooroo.robot.domain
 
 import com.hooroo.robot.direction.CardinalDirection
 import com.hooroo.robot.direction.RelativeDirection
+import com.hooroo.robot.exception.NotOnTableException
+import com.hooroo.robot.exception.OutOfBoundsException
 
 import static com.hooroo.robot.direction.CardinalDirection.*
 import static com.hooroo.robot.direction.RelativeDirection.*
@@ -23,8 +25,6 @@ class Robot {
      * @return Boolean indicated if robot is on table
      */
     Boolean getOnTable() {
-        println("${table} - ${x},${y},${facing}")
-
         if (!table) {
             return false
         }
@@ -87,7 +87,7 @@ class Robot {
 
     /**
      * Moves the robot forward by one coordinate, if possible
-     * @throws OutOfBoundsException When destination coordinate is not reachable or out of bounds
+     * @throws com.hooroo.robot.exception.OutOfBoundsException When destination coordinate is not reachable or out of bounds
      */
     void move() throws OutOfBoundsException {
         if (!this.onTable) {
@@ -117,6 +117,10 @@ class Robot {
     }
 
     String getOutput() {
+        if (!this.onTable) {
+            throw new NotOnTableException()
+        }
+
         return "${x},${y},${facing}"
     }
 
@@ -124,7 +128,7 @@ class Robot {
 
         /**
          * Specify the coordinate to place the robot at.<br/>
-         * Refer to {@link Robot#putOn(com.hooroo.robot.Table)} for example usage
+         * Refer to {@link Robot#putOn(Table)} for example usage
          * @param x Position on X axis
          * @param y Position on Y axis
          * @throws OutOfBoundsException When desired starting coordinate is out of bounds
@@ -146,7 +150,7 @@ class Robot {
 
         /**
          * Specify the initial directio the robot is to face.<br/>
-         * Refer to {@link Robot#putOn(com.hooroo.robot.Table)} for example usage
+         * Refer to {@link Robot#putOn(Table)} for example usage
          * @param facing {@link CardinalDirection direction} the robot is to face
          */
         void facing(CardinalDirection facing) {

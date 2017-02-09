@@ -1,5 +1,9 @@
 package com.hooroo.robot
 
+import com.hooroo.robot.domain.Robot
+import com.hooroo.robot.domain.Table
+import com.hooroo.robot.exception.NotOnTableException
+import com.hooroo.robot.exception.OutOfBoundsException
 import spock.lang.Specification
 
 import static com.hooroo.robot.direction.CardinalDirection.*
@@ -321,6 +325,14 @@ class RobotTests extends Specification {
     def "Robot should throw exception if move() is invoked without first being placed on a table"() {
         when:
         robot.turn(LEFT)
+
+        then:
+        thrown NotOnTableException
+    }
+
+    def "Robot should not report location and direction if not yet placed on table"() {
+        when:
+        robot.output
 
         then:
         thrown NotOnTableException

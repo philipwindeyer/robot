@@ -1,5 +1,6 @@
 package com.hooroo.robot
 
+import com.hooroo.robot.domain.Table
 import spock.lang.Specification
 
 import static com.hooroo.robot.direction.CardinalDirection.*

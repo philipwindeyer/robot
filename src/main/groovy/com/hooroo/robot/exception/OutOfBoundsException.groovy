@@ -1,4 +1,4 @@
-package com.hooroo.robot
+package com.hooroo.robot.exception
 
 /**
  * Thrown when a robot cannot be moved in desired direction
