@@ -52,6 +52,10 @@ class Robot {
         return new At()
     }
 
+    /**
+     * Turns the robot left or right to face a {@link CardinalDirection cardinal direction}
+     * @param direction {@link RelativeDirection} to turn
+     */
     void turn(RelativeDirection direction) {
         switch (facing) {
             case NORTH:
@@ -75,7 +79,11 @@ class Robot {
         }
     }
 
-    void move() {
+    /**
+     * Moves the robot forward by one coordinate, if possible
+     * @throws OutOfBoundsException When destination coordinate is not reachable or out of bounds
+     */
+    void move() throws OutOfBoundsException {
         if (!table.canMove(facing).from(x, y)) {
             throw new OutOfBoundsException()
         }
@@ -105,8 +113,9 @@ class Robot {
          * Refer to {@link Robot#putOn(com.hooroo.robot.Table)} for example usage
          * @param x Position on X axis
          * @param y Position on Y axis
+         * @throws OutOfBoundsException When desired starting coordinate is out of bounds
          */
-        Facing at(Integer x, Integer y) {
+        Facing at(Integer x, Integer y) throws OutOfBoundsException {
 
             if (!Robot.this.table.isValidCoordinate(x, y)) {
                 throw new OutOfBoundsException()
