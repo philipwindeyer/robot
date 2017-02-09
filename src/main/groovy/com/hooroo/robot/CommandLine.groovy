@@ -9,13 +9,15 @@ class CommandLine {
         Application instance = new Application()
         BufferedReader stdin = System.in.newReader()
 
-        println("Type 'help' for instructions")
-
         String input
         String output
 
         while (true) {
             input = stdin.readLine()
+
+            if (input == null) {
+                break
+            }
 
             try {
                 output = instance.execute(input)
