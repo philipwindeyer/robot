@@ -14,8 +14,9 @@
 
 ## Build  
 1. Via bash/sh etc, 'cd' to the project root  
-2. Execute 'gradle -i clean jar'  
+2. Execute 'gradle clean jar'  
 
+- Include the arg '-i' for more logging. E.g. 'gradle -i clean jar'  
 - A runnable jar file called robot.jar will be found at 'build/libs/robot.jar'  
 - Note: This jar will be roughly 7MB as it includes the Groovy runtime as well  
 
