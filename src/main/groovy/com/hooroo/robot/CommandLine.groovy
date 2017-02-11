@@ -5,6 +5,9 @@ package com.hooroo.robot
  */
 class CommandLine {
 
+    // TODO Move io logic from main() into instance method, and instantiate CommandLine on startup instead
+    // TODO if args.length > 0 call alternate instance method which handles file io instead (i.e. if file to be read - run those commands and exit, else accept user input from stdin)
+
     static void main(String[] args) {
         Application instance = new Application()
         BufferedReader stdin = System.in.newReader()

@@ -141,7 +141,7 @@ class ApplicationTests extends Specification {
         application.robot.y == 3
     }
 
-    def "Should not be able to fall off rhe table north from 3,4"() {
+    def "Should not be able to fall off the table north from 3,4"() {
         given:
         application.execute("PLACE 3,4,NORTH")
 
